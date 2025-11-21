@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://wechi-gebi-backend.up.railway.app/api'
+  baseURL: 'https://wechi-gebi-backend.onrender.com/api'
 });
 
 
