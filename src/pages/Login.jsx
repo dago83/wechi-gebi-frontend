@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
@@ -12,22 +11,27 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-     console.log('Login payload:', { email, password, passwordLength: password.length });
+
     try {
+    
       const res = await api.post('/auth/login', { email, password });
+
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', JSON.stringify(res.data.user));
+
       navigate('/dashboard');
     } catch (err) {
       setError('Invalid email or password');
-      console.error(err);
+      console.error('LOGIN ERROR:', err.response?.data || err.message);
     }
   };
 
   return (
     <div className="container mt-5">
       <h2 className="mb-4">Login to Wechi Gebi (ወጪ ገቢ)</h2>
+
       {error && <div className="alert alert-danger">{error}</div>}
+
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">Email</label>
@@ -40,6 +44,7 @@ function Login() {
             required
           />
         </div>
+
         <div className="mb-3">
           <label htmlFor="password" className="form-label">Password</label>
           <input
@@ -51,6 +56,7 @@ function Login() {
             required
           />
         </div>
+
         <button type="submit" className="btn btn-primary w-100">Login</button>
       </form>
     </div>
