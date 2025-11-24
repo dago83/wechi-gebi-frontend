@@ -15,14 +15,19 @@ function App() {
     <Router>
       <div className="d-flex flex-column min-vh-100">
 
+     
         <Navbar />
 
+      
         <div className="container my-4 flex-grow-1">
           <Routes>
+
+      
             <Route path="/" element={<Welcome />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
 
+       
             <Route
               path="/dashboard"
               element={
@@ -59,10 +64,13 @@ function App() {
               }
             />
 
+       
             <Route path="*" element={<Welcome />} />
+
           </Routes>
         </div>
 
+     
         <Footer />
       </div>
     </Router>
